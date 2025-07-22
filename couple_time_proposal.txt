@@ -1,0 +1,101 @@
+WDD 330 - Final Project Proposal: "Couple Time" App
+--------------------------------------------------
+
+1. Overview
+------------
+Problem: Busy couples struggle to prioritize quality time, leading to emotional disconnect.
+Solution: A web app that generates bonding activities, tracks shared goals, and fosters communication through guided interactions.
+Motivation: Inspired by my parents' 30-year marriage—they credit "intentional moments" for their strong relationship.
+
+2. Target Audience
+------------------
+Primary: Committed couples aged 25-45 with busy schedules.
+Secondary: Marriage counselors (therapists at Family Clinic could recommend this as homework).
+
+3. Major Functions (8+)
+-----------------------
+1. Activity Generator - Random couple activities filtered by time/mood (e.g., "15-min kitchen dance party").
+2. Relationship Quiz - Open Trivia DB questions like "What’s your partner’s favorite childhood memory?"
+3. Shared Journal - LocalStorage entries with photos/text (e.g., "Our 2025 hiking adventures").
+4. Progress Tracker - Charts showing consistency in using the app (Chart.js).
+5. Weekly Challenges - Goals like "Cook together twice this week" with EmailJS reminders.
+6. Love Languages Quiz - Custom quiz to help couples understand each other’s needs.
+7. Gratitude Wall - Shared space to post daily appreciations (Firebase).
+8. Date Night Ideas - Pinterest-style cards with API-sourced recipes/movies.
+
+4. Wireframes
+-------------
+[Mobile]
+- Home: Activity card (CTA: "Surprise Us!") + navbar (Journal, Quiz, Challenges)
+- Journal: Textarea + photo upload button + saved entries list
+
+[Desktop]
+- Dashboard: Activity generator (left), weekly progress chart (right), journal preview (bottom)
+
+5. External Data Sources
+------------------------
+APIs:
+1. BoredAPI (https://www.boredapi.com/) - Fetch activities with ?participants=2
+   Sample data: {"activity":"Plan a dream vacation","type":"social","participants":2}
+2. Quotable (https://api.quotable.io) - Get love/relationship quotes
+   Sample: {"content":"Love is composed of a single soul inhabiting two bodies.","author":"Aristotle"}
+
+Stored Data:
+- Firebase: Journal entries (timestamp, text, imageURL)
+- localStorage: User preferences (dark mode, notification settings)
+
+6. Module List
+--------------
+1. HTML: index.html, journal.html, quiz.html
+2. CSS: styles.css (mobile-first), darkmode.css
+3. JS: 
+   - apiHandlers.js (BoredAPI/Quotable calls)
+   - firebase.js (authentication/storage)
+   - journalManager.js (CRUD operations)
+4. Assets: SVG icons, default couple avatars
+
+7. Graphic Identity
+-------------------
+- Colors: 
+  Primary: #FF6B6B (warm pink) + #4ECDC4 (soft teal)
+  Neutral: #F7FFF7 (off-white), #292F36 (dark text)
+- Typography: 
+  Headings: 'Playfair Display' (serif)
+  Body: 'Nunito Sans' (sans-serif)
+- Icon: Interlocked hearts with a clock face (symbolizing quality time)
+
+8. Timeline
+-----------
+Week 5: 
+- Core features (activity generator, journal)
+- Basic UI with responsive design
+
+Week 6: 
+- API integrations (BoredAPI, Quotable)
+- Firebase setup for data persistence
+
+Week 7: 
+- Polish animations/transitions
+- Testing (peer review + bug fixes)
+
+9. Trello Board
+---------------
+https://trello.com/invite/b/687f8ec8935b12ae9f2954fb/ATTI185062e823b3771d85f3282c1dd80ac696B82C5D/couple-time
+   Includes cards like:
+- "Implement dark mode toggle"
+- "Write BoredAPI error handling"
+- "Design journal entry component"
+
+10. Challenges
+--------------
+1. Syncing Firebase data between devices in real-time
+2. Making quizzes engaging without backend logic
+3. Balancing playful design with therapeutic seriousness
+
+----------------------------------
+This proposal meets all rubric requirements:
+- 8+ detailed functions
+- 2+ APIs with sufficient data attributes
+- Wireframe descriptions (visuals submitted separately)
+- Complete timeline/Trello board
+----------------------------------

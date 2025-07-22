@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Couple Time - Desktop Wireframe (Family Clinic Colors)</title>
+  <style>
+    :root {
+      --primary-green: #4CAF50; /* Family Clinic green */
+      --secondary-orange: #FF9800; /* Family Clinic orange */
+      --accent-brown: #795548; /* Family Clinic brown */
+      --light-bg: #F5F5F5;
+      --white: #FFFFFF;
+    }
+    body { 
+      font-family: 'Roboto', sans-serif;
+      margin: 0; 
+      padding: 20px; 
+      background: var(--light-bg);
+    }
+    .container { 
+      display: grid; 
+      grid-template-columns: 250px 1fr; 
+      gap: 20px; 
+      max-width: 1200px; 
+      margin: 0 auto;
+    }
+    header { 
+      grid-column: 1 / -1; 
+      background: var(--primary-green);
+      color: white; 
+      padding: 20px; 
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .sidebar { 
+      background: var(--white);
+      padding: 15px; 
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--secondary-orange);
+    }
+    .main { 
+      display: grid; 
+      grid-template-rows: auto 1fr; 
+      gap: 20px;
+    }
+    .activity-card { 
+      background: var(--white);
+      padding: 25px; 
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      border-top: 4px solid var(--secondary-orange);
+    }
+    .journal-preview { 
+      background: var(--white);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-top: 4px solid var(--accent-brown);
+    }
+    button { 
+      background: var(--primary-green);
+      color: white; 
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    button:hover {
+      background: var(--secondary-orange);
+    }
+    .progress-chart { 
+      height: 200px; 
+      background: var(--white);
+      border-radius: 8px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px dashed var(--accent-brown);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      padding: 10px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    li:hover {
+      background: var(--light-bg);
+      color: var(--secondary-orange);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Couple Time</h1>
+      <p>Strengthening relationships through meaningful moments</p>
+    </header>
+    
+    <div class="sidebar">
+      <h3 style="color: var(--primary-green);">Menu</h3>
+      <ul>
+        <li>🏠 Home</li>
+        <li>📔 Journal</li>
+        <li>💑 Quizzes</li>
+        <li>🏆 Challenges</li>
+        <li>⚙️ Settings</li>
+      </ul>
+    </div>
+    
+    <div class="main">
+      <div class="activity-card">
+        <h2 style="color: var(--primary-green);">Today's Activity</h2>
+        <p>"Cook a meal together using only 5 ingredients!"</p>
+        <button>Get New Activity</button>
+      </div>
+      
+      <div class="progress-chart">
+        [Weekly Relationship Progress]
+      </div>
+      
+      <div class="journal-preview">
+        <h3 style="color: var(--accent-brown);">Recent Memories</h3>
+        <p>July 22: Sunset walk at the beach</p>
+        <button>View Journal</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

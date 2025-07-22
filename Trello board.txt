@@ -1,0 +1,85 @@
+Trello Board: "Couple Time" App Development
+===========================================
+
+Board URL: https://trello.com/invite/b/687f8ec8935b12ae9f2954fb/ATTI185062e823b3771d85f3282c1dd80ac696B82C5D/couple-time
+
+Lists:
+------
+
+1. **Backlog**
+   - Research relationship therapy techniques
+   - Find free couple-themed SVG icons
+   - Survey potential users (Family Clinic couples)
+
+2. **To Do (Week 5)**
+   - Set up base HTML/CSS files
+   - Design mobile-first responsive layout
+   - Implement localStorage for journal entries
+   - Create activity generator UI
+   - Build static quiz components
+
+3. **In Progress**
+   - Integrate BoredAPI (fetch activities for 2 people)
+   - Style quote cards with Quotable API data
+   - Test dark mode toggle functionality
+
+4. **Testing**
+   - Cross-browser compatibility check
+   - Mobile gesture testing (swipe for new activities)
+   - Journal entry character limits
+
+5. **Done (Week 5)**
+   - Basic journal CRUD operations complete
+   - Activity generator returns filtered results
+   - Wireframes approved by peers
+
+Cards Details:
+--------------
+
+**Card 1: API Integration - BoredAPI**
+- Description: Fetch activities with ?participants=2 parameter
+- Checklist:
+  [x] Test API endpoint
+  [ ] Handle rate limits
+  [ ] Add error fallback activities
+- Labels: #Javascript #API
+- Due: Week 6
+
+**Card 2: Firebase Setup**
+- Description: Configure auth and Firestore for shared journals
+- Attachments: Firebase docs link
+- Labels: #Database
+- Members: [Your Name]
+
+**Card 3: Dark Mode Toggle**
+- Description: Implement CSS variables for theme switching
+- Code Sample:
+  ```css
+  :root {
+    --bg-primary: #F7FFF7;
+    --text-primary: #292F36;
+  }
+  .dark-mode {
+    --bg-primary: #292F36;
+    --text-primary: #F7FFF7;
+  }
+Labels: #CSS
+
+Card 4: Weekly Challenges Feature
+
+Description: Allow therapists to assign custom tasks
+
+Checklist:
+[ ] Design UI
+[ ] Connect EmailJS for reminders
+[ ] Add progress tracking
+
+Due: Week 7
+
+Power-Ups:
+
+Calendar (for timeline sync)
+
+GitHub (code integration)
+
+Figma (wireframe links)
