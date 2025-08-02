@@ -1,85 +1,67 @@
 WDD 330 - Final Project Proposal: "Couple Time" App
---------------------------------------------------
+==================================================
 
 1. Overview
-------------
-Problem: Busy couples struggle to prioritize quality time, leading to emotional disconnect.
-Solution: A web app that generates bonding activities, tracks shared goals, and fosters communication through guided interactions.
-Motivation: Inspired by my parents' 30-year marriage—they credit "intentional moments" for their strong relationship.
+-----------
+A therapeutic web app designed to help couples strengthen relationships through guided activities, now featuring Family Clinic's official brand colors (#005303 green, #FF9800 orange, #795548 brown) for visual consistency with their practice.
 
 2. Target Audience
-------------------
-Primary: Committed couples aged 25-45 with busy schedules.
-Secondary: Marriage counselors (therapists at Family Clinic could recommend this as homework).
+-----------------
+Primary: Couples in therapy at Family Clinic (aligned with their green/orange/brown branding)
+Secondary: Counselors tracking patient progress
 
 3. Major Functions (8+)
 -----------------------
-1. Activity Generator - Random couple activities filtered by time/mood (e.g., "15-min kitchen dance party").
-2. Relationship Quiz - Open Trivia DB questions like "What’s your partner’s favorite childhood memory?"
-3. Shared Journal - LocalStorage entries with photos/text (e.g., "Our 2025 hiking adventures").
-4. Progress Tracker - Charts showing consistency in using the app (Chart.js).
-5. Weekly Challenges - Goals like "Cook together twice this week" with EmailJS reminders.
-6. Love Languages Quiz - Custom quiz to help couples understand each other’s needs.
-7. Gratitude Wall - Shared space to post daily appreciations (Firebase).
-8. Date Night Ideas - Pinterest-style cards with API-sourced recipes/movies.
+1. Nature-Themed Activities ("Green" category)
+2. Warm Conversation Starters ("Orange" category)  
+3. Grounding Exercises ("Brown" category)
+4. Mood Tracker with color-coded entries
+5. Shared Gratitude Journal
+6. Therapist Resources Portal
+7. Offline Mode (localStorage)
+8. Accessibility Mode (high contrast)
 
 4. Wireframes
 -------------
-[Mobile]
-- Home: Activity card (CTA: "Surprise Us!") + navbar (Journal, Quiz, Challenges)
-- Journal: Textarea + photo upload button + saved entries list
+Live Links:
+- Desktop: [View](https://nunosilvaferreira.github.io/wdd330/Wireframe/desktop.html)
+- Mobile: [View](https://nunosilvaferreira.github.io/wdd330/Wireframe/mobile.html)
 
-[Desktop]
-- Dashboard: Activity generator (left), weekly progress chart (right), journal preview (bottom)
+5. Color Scheme (From Wireframes)
+---------------------------------
+| Role            | Color       | HEX        | Usage Examples              |
+|-----------------|-------------|------------|-----------------------------|
+| Primary Green   | #005303     | Dark Green | Headers, main buttons       |
+| Secondary Orange| #FF9800     | Warm Orange| Interactive elements, alerts|
+| Accent Brown    | #795548     | Earth Brown| Journal entries, borders    |
+| Light BG        | #F5F5F5     | Off-White  | Background, cards           |
+| Pure White      | #FFFFFF     | White      | Text areas, modal windows   |
 
-5. External Data Sources
+6. External Data Sources
 ------------------------
 APIs:
-1. BoredAPI (https://www.boredapi.com/) - Fetch activities with ?participants=2
-   Sample data: {"activity":"Plan a dream vacation","type":"social","participants":2}
-2. Quotable (https://api.quotable.io) - Get love/relationship quotes
-   Sample: {"content":"Love is composed of a single soul inhabiting two bodies.","author":"Aristotle"}
+1. BoredAPI (filtered by participants=2)
+2. Quotable (relationship quotes)
 
-Stored Data:
-- Firebase: Journal entries (timestamp, text, imageURL)
-- localStorage: User preferences (dark mode, notification settings)
-
-6. Module List
+7. Module List
 --------------
-1. HTML: index.html, journal.html, quiz.html
-2. CSS: styles.css (mobile-first), darkmode.css
-3. JS: 
-   - apiHandlers.js (BoredAPI/Quotable calls)
-   - firebase.js (authentication/storage)
-   - journalManager.js (CRUD operations)
-4. Assets: SVG icons, default couple avatars
+- CSS: themes.css (contains all color variables)
+- JS: colorThemeManager.js (handles color modes)
 
-7. Graphic Identity
+8. Graphic Identity
 -------------------
-- Colors: 
-  Primary: #FF6B6B (warm pink) + #4ECDC4 (soft teal)
-  Neutral: #F7FFF7 (off-white), #292F36 (dark text)
-- Typography: 
-  Headings: 'Playfair Display' (serif)
-  Body: 'Nunito Sans' (sans-serif)
-- Icon: Interlocked hearts with a clock face (symbolizing quality time)
+Typography:
+- Headings: 'Roboto Condensed' (clean)
+- Body: 'Open Sans' (accessible)
 
-8. Timeline
+Icon: Two leaves forming a heart (green/brown)
+
+9. Timeline
 -----------
-Week 5: 
-- Core features (activity generator, journal)
-- Basic UI with responsive design
+Week 5: Implement color scheme
+Week 6: Activity generator
+Week 7: Therapist tools
 
-Week 6: 
-- API integrations (BoredAPI, Quotable)
-- Firebase setup for data persistence
-
-Week 7: 
-- Polish animations/transitions
-- Testing (peer review + bug fixes)
-
-9. Trello Board
----------------
 https://trello.com/invite/b/687f8ec8935b12ae9f2954fb/ATTI185062e823b3771d85f3282c1dd80ac696B82C5D/couple-time
    Includes cards like:
 - "Implement dark mode toggle"
@@ -88,14 +70,6 @@ https://trello.com/invite/b/687f8ec8935b12ae9f2954fb/ATTI185062e823b3771d85f3282
 
 10. Challenges
 --------------
-1. Syncing Firebase data between devices in real-time
-2. Making quizzes engaging without backend logic
-3. Balancing playful design with therapeutic seriousness
-
-----------------------------------
-This proposal meets all rubric requirements:
-- 8+ detailed functions
-- 2+ APIs with sufficient data attributes
-- Wireframe descriptions (visuals submitted separately)
-- Complete timeline/Trello board
+1. Maintaining color contrast for accessibility
+2. Emotional tone matching Family Clinic's brand
 ----------------------------------

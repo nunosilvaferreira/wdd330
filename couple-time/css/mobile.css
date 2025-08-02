@@ -1,0 +1,47 @@
+/* Base Mobile Styles */
+.mobile-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.mobile-nav a {
+  color: var(--primary-green);
+  padding: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 83, 3, 0.1);
+}
+
+#menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-cta {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .app-container {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .activity-card {
+    margin-bottom: 20px;
+  }
+}
