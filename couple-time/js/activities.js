@@ -47,6 +47,21 @@ async function fetchCoupleActivity() {
   }
 }
 
+// fallback local
+const localActivities = [
+  "Cook a meal together blindfolded",
+  "Write each other love letters",
+  "Plan your dream vacation"
+];
+
+function getFallbackActivity() {
+  return {
+    activity: localActivities[Math.floor(Math.random() * localActivities.length)],
+    type: "fallback"
+  };
+}
+
+
 // Event Listeners
 activityButton.addEventListener('click', fetchCoupleActivity);
 
