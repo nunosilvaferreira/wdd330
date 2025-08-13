@@ -65,9 +65,7 @@ function safeHTML(str){ const d=document.createElement('div'); d.textContent = s
 // ---------- APIs ----------
 // 1) Bored API: random activity for 2 participants
 async function getChallenge() {
-  const res = await fetch('https://api.api-ninjas.com/v1/activity?participants=2', {
-    headers: { 'X-Api-Key': 'x91FKE9Iudh7RRBbYjk4tQ==skqFu48VUEQMh3fr' } // Registre-se gratuitamente em https://api-ninjas.com
-  });
+  const res = await fetch('https://www.boredapi.com/api/activity?participants=2');
   if (!res.ok) throw new Error('Activity API failed');
   return res.json();
 }
@@ -80,10 +78,18 @@ async function getRecipe(){
 }
 
 // 3) Quotable: quote tagged love/friendship
-async function getTip(){
-  const res = await fetch('https://api.quotable.io/random?tags=love|friendship');
-  if(!res.ok) throw new Error('Quote API failed');
-  return res.json();
+async function getTip() {
+  try {
+    const res = await fetch('https://api.quotable.io/random?tags=love|friendship');
+    if (!res.ok) throw new Error('Quote API failed');
+    return res.json();
+  } catch (err) {
+    // Fallback quote
+    return {
+      content: "The best thing to hold onto in life is each other.",
+      author: "Audrey Hepburn"
+    };
+  }
 }
 
 // ---------- Renderers ----------
