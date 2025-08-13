@@ -64,16 +64,17 @@ function safeHTML(str){ const d=document.createElement('div'); d.textContent = s
 
 // ---------- APIs ----------
 // 1) Bored API: random activity for 2 participants
-async function getChallenge(){
-  const url = 'https://www.boredapi.com/api/activity?participants=2';
-  const res = await fetch(url, {cache:'no-store'});
-  if(!res.ok) throw new Error('Bored API failed');
+async function getChallenge() {
+  const res = await fetch('https://api.api-ninjas.com/v1/activity?participants=2', {
+    headers: { 'X-Api-Key': 'x91FKE9Iudh7RRBbYjk4tQ==skqFu48VUEQMh3fr' } // Registre-se gratuitamente em https://api-ninjas.com
+  });
+  if (!res.ok) throw new Error('Activity API failed');
   return res.json();
 }
 
 // 2) DummyJSON: random recipe (rich JSON 8+ attrs)
 async function getRecipe(){
-  const res = await fetch('https://dummyjson.com/recipes/random');
+  const res = await fetch('https://dummyjson.com/recipes/1');
   if(!res.ok) throw new Error('Recipe API failed');
   return res.json(); // {recipes: [ { ... many attributes ... } ]}
 }
