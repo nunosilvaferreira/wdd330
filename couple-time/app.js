@@ -65,11 +65,16 @@ function safeHTML(str){ const d=document.createElement('div'); d.textContent = s
 // ---------- APIs ----------
 // 1) Bored API: random activity for 2 participants
 async function getChallenge() {
-  const res = await fetch('https://www.boredapi.com/api/activity?participants=2');
-  if (!res.ok) throw new Error('Activity API failed');
-  return res.json();
+  const res = await fetch('https://uselessfacts.jsph.pl/api/v2/facts/random');
+  const data = await res.json();
+  return {
+    activity: `Debate this fact: "${data.text}"`, // Turn the fact into a topic
+    type: "couple",
+    participants: 2,
+    price: 0,
+    key: "fact_" + Date.now()
+  };
 }
-
 // 2) DummyJSON: random recipe (rich JSON 8+ attrs)
 async function getRecipe(){
   const res = await fetch('https://dummyjson.com/recipes/1');
