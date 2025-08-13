@@ -1,0 +1,130 @@
+/* Couple Time – styles.css
+   Uses CSS custom properties, transitions, animation, and a card flip.
+*/
+/* Family Clinic Brand Colors */
+:root{
+  --primary-green: #005303;
+  --secondary-orange: #d1783b;
+  --accent-brown: #795548;
+  --light-bg: #F5F5F5;
+  --pure-white: #FFFFFF;
+  --text-dark: #333333;
+
+  --bg: var(--light-bg);
+  --text: var(--text-dark);
+  --muted: #475569;
+  --primary: var(--primary-green);
+  --primary-600: color-mix(in oklab, var(--primary-green), black 10%);
+  --success: var(--secondary-orange);
+  --card: var(--pure-white);
+  --border: rgba(2,6,23,0.08);
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+[data-theme="dark"]{
+  --bg: #0b1020;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --card: #121a2f;
+  --border: rgba(226,232,240,0.08);
+  --shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+*{ box-sizing: border-box }
+html,body{ height:100% }
+body{
+  margin:0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 300ms ease, color 300ms ease;
+}
+
+.container{ width:min(1100px, 92%); margin-inline:auto }
+.site-header{ position: sticky; top:0; backdrop-filter: saturate(1.3) blur(8px); z-index: 10; border-bottom:1px solid var(--border); background: color-mix(in oklab, var(--bg) 85%, transparent) }
+.header-inner{ display:flex; align-items:center; justify-content:space-between; padding: 12px 0 }
+.logo{ margin:0; font-weight:800; letter-spacing:-0.02em }
+.logo span{ color: var(--primary) }
+
+.nav{ display:flex; gap:10px; align-items:center }
+.btn, .icon-btn{
+  border:1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  padding:10px 14px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 200ms ease, background 200ms ease, color 200ms ease, border-color 200ms ease;
+  box-shadow: var(--shadow);
+}
+.btn:hover, .icon-btn:hover{ transform: translateY(-1px) }
+.btn:active, .icon-btn:active{ transform: translateY(0) scale(.98) }
+.btn.primary{ background: var(--primary); color:white; border-color: color-mix(in oklab, var(--primary), black 10%) }
+.btn.primary:hover{ background: var(--primary-600) }
+.btn.success{ background: var(--success); color:white }
+.btn.outline{ background: transparent }
+
+.icon-btn{ display:grid; place-items:center; padding:8px; width:40px; height:40px }
+
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+  padding: 24px 0 48px;
+}
+.card{
+  grid-column: span 12;
+  background: var(--card);
+  border:1px solid var(--border);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.card h2{ margin-top:0 }
+.actions{ display:flex; gap:8px; flex-wrap:wrap }
+
+/* Desktop layout */
+@media (min-width: 900px){
+  #challenge-card{ grid-column: span 7 }
+  #recipe-card{ grid-column: span 5 }
+  #tip-card{ grid-column: span 5 }
+  #memories-card{ grid-column: span 7 }
+  #favorites-card{ grid-column: span 12 }
+}
+
+/* Card flip (advanced CSS) */
+.flip{ perspective: 1200px; }
+.flip .card-front, .flip .card-back{
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(.2,.7,.2,1);
+  will-change: transform;
+}
+.flip .card-front{ transform: rotateY(var(--rot-front, 0deg)); }
+.flip .card-back{ transform: rotateY(var(--rot-back, 180deg)); position: relative; top:-220px } /* overlap */
+.flip.flipped{ --rot-front: 180deg; --rot-back: 0deg; }
+
+/* Memories */
+.memories{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap:12px }
+.memories li{ border:1px solid var(--border); border-radius:16px; overflow:hidden; background: color-mix(in oklab, var(--card), white 6%); box-shadow: var(--shadow) }
+.memories img{ width:100%; height:160px; object-fit:cover; display:block }
+.memories .meta{ padding:10px; display:flex; justify-content:space-between; align-items:center; font-size:.9rem; color:var(--muted) }
+.memories .note{ padding:0 10px 12px }
+
+/* Settings dialog */
+dialog{ border:1px solid var(--border); border-radius:18px; padding:0; background: var(--card); color: var(--text) }
+dialog::backdrop{ background: rgba(2,6,23,.4); backdrop-filter: blur(2px) }
+.settings{ padding:16px 16px 10px; min-width:320px }
+.settings h3{ margin:0 0 10px }
+.settings label{ display:grid; gap:6px; margin:8px 0 }
+.settings input[type="text"]{ padding:10px 12px; border-radius:12px; border:1px solid var(--border); background: var(--bg); color: var(--text) }
+.settings .switch{ display:flex; align-items:center; gap:10px }
+.settings menu{ display:flex; gap:8px; padding:12px 0 0; justify-content:flex-end }
+
+/* Subtle entrance animation */
+@keyframes rise-in{
+  from { opacity: 0; transform: translateY(8px) }
+  to   { opacity: 1; transform: translateY(0) }
+}
+.card{ animation: rise-in .6s both }

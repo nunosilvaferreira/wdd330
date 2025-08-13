@@ -1,48 +1,115 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Couple Time | Strengthen Your Relationship</title>
-  <link rel="stylesheet" href="css/themes.css">
-  <link rel="stylesheet" href="css/animations.css">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Couple Time</title>
+  <meta name="description" content="A lightweight app to spark daily connection for couples." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./app.js"></script>
 </head>
-<body class="theme-light">
-  <div class="app-container">
-    <!-- Header with Family Clinic-inspired colors -->
-    <header style="background-color: var(--primary-green)">
-      <img src="assets/branding/app-icon.svg" alt="Logo" class="logo">
-      <h1>Couple Time</h1>
-      <p>Presented in partnership with Family Clinic</p>
-    </header>
-
-    <!-- Main Content -->
-    <main>
-      <section class="activity-card fade-in">
-        <h2 style="color: var(--primary-green)">Today's Activity</h2>
-        <div id="activity-display">
-          <p>"Cook a meal together using only 5 ingredients!"</p>
-        </div>
-        <button class="cta-button pulse" style="background-color: var(--secondary-orange)">
-          Get New Activity
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">❤️ Couple <span>Time</span></h1>
+      <nav class="nav">
+        <a class="btn outline" href="./help.html">Help</a>
+        <button id="btn-generate" class="btn primary">Today's Challenge</button>
+        <button id="btn-recipe" class="btn">Cook Together</button>
+        <button id="btn-tip" class="btn">Relationship Tip</button>
+        <button id="btn-settings" class="icon-btn" aria-label="Open settings" title="Settings">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+            <path d="M12 8.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"></path>
+            <path d="M19.4 15a7.94 7.94 0 00.06-1 7.94 7.94 0 00-.06-1l2.11-1.65a.5.5 0 00.12-.64l-2-3.46a.5.5 0 00-.6-.22l-2.49 1a8.2 8.2 0 00-1.73-1l-.38-2.65A.5.5 0 0012.24 2h-4a.5.5 0 00-.5.42l-.38 2.65a8.2 8.2 0 00-1.73 1l-2.49-1a.5.5 0 00-.6.22l-2 3.46a.5.5 0 00.12.64L2.79 12l-2.1 1.65a.5.5 0 00-.12.64l2 3.46a.5.5 0 00.6.22l2.49-1c.53.4 1.11.73 1.73 1l.38 2.65a.5.5 0 00.5.42h4a.5.5 0 00.5-.42l.38-2.65c.62-.27 1.2-.6 1.73-1l2.49 1a.5.5 0 00.6-.22l2-3.46a.5.5 0 00.12-.64L19.4 15z"></path>
+          </svg>
         </button>
-      </section>
+      </nav>
+    </div>
+  </header>
 
-      <section class="journal-preview slide-up">
-        <h3 style="color: var(--accent-brown)">Recent Memories</h3>
-        <div id="journal-entries"></div>
-        <button class="secondary-button">View Full Journal</button>
-      </section>
-    </main>
+  <main class="container grid">
+    <!-- Challenge card (with flip animation) -->
+    <section class="card flip" id="challenge-card" aria-live="polite">
+      <div class="card-face card-front">
+        <h2>Today's Challenge</h2>
+        <p class="challenge-text">Tap “Today's Challenge” to get a new idea for two 👫</p>
+        <div class="actions">
+          <button id="btn-complete" class="btn success" disabled>Mark Complete</button>
+          <button id="btn-favorite" class="btn outline" disabled>Add to Favorites</button>
+        </div>
+      </div>
+      <div class="card-face card-back" id="challenge-back">
+        <h3>Details</h3>
+        <ul id="challenge-meta"></ul>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer style="border-top: 2px solid var(--accent-brown)">
-      <p>© 2025 Family Clinic Partnership</p>
-    </footer>
-  </div>
+    <!-- Recipe suggestion -->
+    <section class="card" id="recipe-card">
+      <h2>Cook Together</h2>
+      <div id="recipe-content">
+        <p>Press “Cook Together” to fetch a random recipe. Great for a date night at home!</p>
+      </div>
+    </section>
 
-  <script src="js/activities.js"></script>
-  <script src="js/colorTheme.js"></script>
+    <!-- Tip / Quote -->
+    <section class="card" id="tip-card">
+      <h2>Relationship Tip</h2>
+      <blockquote id="tip-text">Press “Relationship Tip” for some inspiration.</blockquote>
+      <cite id="tip-author"></cite>
+    </section>
+
+    <!-- Memories (LocalStorage + photo) -->
+    <section class="card" id="memories-card">
+      <h2>Latest Memory</h2>
+      <form id="memory-form">
+        <div class="row">
+          <input type="date" id="memory-date" required />
+          <input type="text" id="memory-note" placeholder="What did you do together?" required maxlength="120"/>
+        </div>
+        <div class="row">
+          <input type="file" id="memory-photo" accept="image/*" />
+          <button class="btn" type="submit">Add Memory</button>
+        </div>
+      </form>
+      <ul id="memories-list" class="memories"></ul>
+    </section>
+
+    <!-- Favorites -->
+    <section class="card" id="favorites-card">
+      <h2>Favorites</h2>
+      <ul id="favorites-list"></ul>
+    </section>
+  </main>
+
+  <!-- Settings Modal -->
+  <dialog id="settings-dialog">
+    <form method="dialog" class="settings">
+      <h3>Settings</h3>
+      <label>
+        Your name
+        <input id="me-name" type="text" placeholder="Alex" />
+      </label>
+      <label>
+        Partner's name
+        <input id="partner-name" type="text" placeholder="Sam" />
+      </label>
+      <label class="switch">
+        <input id="theme-toggle" type="checkbox" />
+        <span>Dark theme</span>
+      </label>
+      <menu>
+        <button value="cancel" class="btn outline">Close</button>
+        <button id="save-settings" class="btn primary" value="default">Save</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer class="site-footer container">
+    <small>Built for WDD330 – Demonstrates JS, Events, APIs, JSON, LocalStorage, and CSS animations.</small>
+  </footer>
 </body>
 </html>
